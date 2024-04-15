@@ -1,0 +1,24 @@
+.turtle {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px;
+  row-gap: 20px;
+}
+
+.state {
+  min-width: 220px;
+  background-color: rgb(246, 225, 107);
+  border-radius: 100px;
+  box-shadow: 0 0 10px 0 rgba(15, 81, 46, 0.624);
+}
+
+.citiesList {
+  box-sizing: border-box;
+  list-style-type: none;
+  padding: 10px;
+}
+
+.city {
+  text-decoration: none;
+}

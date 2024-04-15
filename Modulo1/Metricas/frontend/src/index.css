@@ -1,0 +1,25 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+#root {
+  max-width: 1280px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  color: black;
+}
+
+p {
+  margin: 0px;
+}

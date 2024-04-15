@@ -1,0 +1,48 @@
+.slug {
+  height: 100%;
+  width: 100%;
+}
+
+.friendsTable {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.person {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  align-items: center;
+
+  &Name {
+    box-sizing: border-box;
+    position: relative;
+    background-color: rgb(104, 149, 104);
+    width: 200px;
+    height: 100%;
+    padding: 10px 0px;
+    border-radius: 10px 0px 0px 10px;
+    font-weight: bold;
+  }
+
+  &Friends {
+    width: 100%;
+  }
+}
+
+.friend {
+  background-color: rgb(216, 170, 120);
+  border: 1px solid black;
+  text-align: right;
+  padding: 5px;
+
+  &:first-child {
+    border-radius: 0px 10px 0px 0px;
+  }
+
+  &:last-child {
+    border-radius: 0px 0px 10px 0px;
+  }
+}

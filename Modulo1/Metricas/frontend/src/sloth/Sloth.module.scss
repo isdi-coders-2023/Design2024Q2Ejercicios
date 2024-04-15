@@ -1,0 +1,51 @@
+.sloth {
+  height: 100%;
+
+  padding: 10px 10px 10px 10px;
+}
+
+.slothTable {
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+}
+
+.slothRow {
+  padding: 5px;
+  height: 45px;
+  display: flex;
+  flex-direction: row;
+  align-content: space-around;
+  justify-content: white-space;
+  gap: 20px;
+
+  &:nth-child(even) {
+    background-color: #e1c98c;
+  }
+
+  &Header {
+    background-color: #8ba553;
+    font-weight: bold;
+  }
+}
+
+.slothCell {
+  &Name {
+    width: 100px;
+  }
+
+  &Population {
+    width: 100px;
+  }
+
+  &Size {
+    width: 100px;
+  }
+
+  &Distance {
+    margin-left: auto;
+    text-align: right;
+    align-self: flex-start;
+    flex-basis: 3;
+  }
+}
