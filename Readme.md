@@ -34,5 +34,5 @@ que el repositorio mantiene un nivel de organización que lo haga usable:
 
 ### Modulo 1: Herramientas conceptuales
 
-- [Métricas de software](Modulo1/Metricas/Readme.md)
-- [Paradigmas de software](Modulo1/Paradigmas/README.md)
+- [Métricas de software](Modulo1/Metricas)
+- [Paradigmas de software](Modulo1/Paradigmas)
