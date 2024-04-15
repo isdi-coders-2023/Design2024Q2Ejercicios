@@ -1,0 +1,60 @@
+@use "../../styles/settings.scss" as *;
+
+.selectionScreen {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  background-color: $co-textTerminal;
+  gap: 15px;
+}
+
+@mixin selected {
+  background-color: $co-selected;
+  color: black;
+}
+
+.availableStories {
+  box-sizing: border-box;
+  width: 400px;
+  height: 250px;
+  background-color: $co-terminal;
+  padding: 20px;
+  margin: 0px;
+  list-style-type: none;
+
+  & li {
+    text-decoration: none;
+    text-align: left;
+    padding: 4px 10px;
+  }
+
+  & li:hover {
+    @include selected;
+  }
+
+  & li.selected {
+    @include selected;
+  }
+}
+
+.storyDescription {
+  box-sizing: border-box;
+  margin: 0px;
+  width: 300px;
+  height: 250px;
+  flex-grow: 4;
+  padding: 30px;
+  text-align: justify;
+  background-color: $co-terminal;
+}
+
+.controls {
+  padding: 20px;
+
+  & button {
+    @include button-style;
+  }
+}

@@ -1,0 +1,18 @@
+$co-terminal: rgb(69, 93, 94);
+$co-textTerminal: rgb(92, 227, 110);
+$co-selected: $co-textTerminal;
+$co-softBackground: rgb(85, 128, 109);
+
+@mixin button-style {
+  min-width: 200px;
+  color: $co-textTerminal;
+  background-color: $co-terminal;
+  border: 3px solid $co-textTerminal;
+  border-radius: 0;
+
+  &:hover {
+    background-color: $co-selected;
+    color: black;
+    border: 3px solid $co-textTerminal;
+  }
+}

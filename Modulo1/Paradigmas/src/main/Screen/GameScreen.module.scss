@@ -1,0 +1,38 @@
+@use "../../styles/settings.scss" as *;
+
+.gameScreen {
+  display: flex;
+  gap: 20px;
+}
+
+.sceneImage {
+  width: 640px;
+  height: 480px;
+  object-fit: cover;
+  border: 1px solid $co-textTerminal;
+  filter: grayscale(75%);
+}
+
+.storyDescription {
+  border: 2px dashed $co-textTerminal;
+  box-sizing: border-box;
+  padding: 35px;
+}
+
+.options {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+
+  & button {
+    @include button-style;
+    margin: 10px;
+    width: 640px;
+  }
+}
+
+.storyInfo {
+}
