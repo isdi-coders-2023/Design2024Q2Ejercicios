@@ -6,25 +6,25 @@ export interface ConversationHistory {
   lines: string[];
 }
 
-interface ConversationHistoryProps {}
+interface ConversationHistoryProps {
+  conversationHistory: ConversationHistory[];
+}
 
-export const ConversationHistoryDisplay: React.FC<
-  ConversationHistoryProps
-> = () => {
+export const ConversationHistoryDisplay: React.FC<ConversationHistoryProps> = ({
+  conversationHistory,
+}) => {
   return (
     <div className={styles.scrollWrapper}>
       <div className={styles.historyRoot}>
-        <ul className={styles.history}>
-          <li className={styles.line}>
-            La línea de presentación del personaje
-          </li>
-          <li className={styles.line}>Tú: pregunta al personaje</li>
-          <li className={styles.line}>Personaje: su contestación</li>
-          <li className={styles.line}>Tú: pregunta al personaje</li>
-          <li className={styles.line}>Personaje: su contestación</li>
-          <li className={styles.line}>Tú: pregunta al personaje</li>
-          <li className={styles.line}>Personaje: su contestación</li>
-        </ul>
+        {conversationHistory.map((conversation, index) => (
+          <ul key={index} className={styles.history}>
+            {conversation.lines.map((line, index) => (
+              <li key={index} className={styles.line}>
+                {line}
+              </li>
+            ))}
+          </ul>
+        ))}
       </div>
     </div>
   );
