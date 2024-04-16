@@ -1,119 +1,118 @@
 {
-    "title": "El misterio de la mansión",
-    "initialDescription": "Un asesinato ha tenido lugar en una mansión victoriana. La víctima es un joven aristócrata, hijo de la dueña de la casa. El mayordomo y la madre de la víctima son los principales sospechosos. El detective debe investigar la escena del crimen y hablar con los testigos para resolver el caso.",
-    "locations": [
+  "title": "El misterio de la mansión",
+  "initialDescription": "Un asesinato ha tenido lugar en una mansión victoriana. La víctima es un joven aristócrata, hijo de la dueña de la casa. El mayordomo y la madre de la víctima son los principales sospechosos. El detective debe investigar la escena del crimen y hablar con los testigos para resolver el caso. v1",
+  "locations": [
+    {
+      "name": "recibidor",
+      "image": "recibidor.jpg",
+      "description": "Un recibidor elegante, con un gran espejo y una alfombra roja",
+      "connections": ["cocina", "salón"],
+      "clues": [
         {
-            "name": "recibidor",
-            "image": "recibidor.jpg",
-            "description": "Un recibidor elegante, con un gran espejo y una alfombra roja",
-            "connections": ["cocina", "salón"],
-            "clues": [
-                {
-                    "name": "cuchillo",
-                    "description": "Un cuchillo de cocina viejo y gastado, manchado con la sangre de la víctima",
-                    "requisites": ["testimonio de la señora", "cadaver de la victima"]
-                }
-            ]
-        },
-        {
-            "name": "cocina",
-            "image": "cocina.jpg",
-            "description": "Una cocina antigua, con fogones de gas y utensilios de cobre",
-            "connections": ["recibidor"],
-            "clues": [
-                {
-                    "name": "cadaver de la victima",
-                    "description": "El cuerpo sin vida de la víctima, con una herida de cuchillo en el pecho"
-                }
-            ]
-        },
-        {
-            "name": "salón",
-            "image": "salon.jpg",
-            "description": "Un salón lujoso, con muebles de madera y cuadros antiguos",
-            "connections": ["recibidor"]
+          "name": "cuchillo",
+          "description": "Un cuchillo de cocina viejo y gastado, manchado con la sangre de la víctima",
+          "requisites": ["testimonio de la señora", "cadaver de la victima"]
         }
-        
-    ],
-
-    "characters": [
+      ]
+    },
+    {
+      "name": "cocina",
+      "image": "cocina.jpg",
+      "description": "Una cocina antigua, con fogones de gas y utensilios de cobre",
+      "connections": ["recibidor"],
+      "clues": [
         {
-            "id": "donAlfredo",
-            "name": "Don Alfredo, mayordomo",
-            "description": "Un hombre de mediana edad, con aspecto serio y formal",
-            "location": "recibidor",
-            "dialog": {
-                "initial": "Buenas tardes, señor detective. ¿En qué puedo ayudarle?",
-                "continuation": "¿Quiere hacerme alguna pregunta más?",
-                "final": "Gracias por su tiempo, señora. Si tiene alguna información adicional, no dude en decírmelo.",
-
-                "options": [
-                    {
-                        "question": "¿Dónde estaba usted la noche del crimen?",
-                        "answer": "Estaba en la cocina, preparando la cena para el señor y la señora.",
-                        "options": [
-                            {
-                                "question": "¿Vio a alguien más en la casa?",
-                                "answer": "No, no vi a nadie más. Estaba solo en la cocina."
-                            },
-                            {
-                                "question": "¿Como era su relación laboral con la víctima?",
-                                "answer": "Mucho trabajo y un sueldo bajo, como siempre."
-                            }
-                        ]
-                    },
-                    {
-                        "question": "¿Qué opina de la víctima?",
-                        "answer": "Era hijo de buena familia, pero algo distante. No hablaba mucho con los demás."
-                    }
-                ]
-            }
-        },
-        {
-            "id": "ladyButterworth",        
-            "name": "Lady Butterworth",
-            "description": "Una mujer de avanzada edad, con aspecto elegante y distante",
-            "location": "salón",
-            "dialog": {
-                "initial": "Buenas tardes, detective. ¿En qué puedo ayudarle?",
-                "continuation": "¿Quiere hacerme alguna pregunta más?",
-                "final": "Gracias por su tiempo, señora. Si tiene alguna información adicional, no dude en decírmelo.",
-
-                "options": [
-                    {
-                        "question": "¿Dónde estaba usted la noche del crimen?",
-                        "answer": "Estaba en el salón, leyendo un libro. No me di cuenta de nada raro.",
-                        "options": [
-                            {
-                                "question": "¿Vio a alguien más en la casa?",
-                                "answer": "No, no vi a nadie más. Estaba sola en el salón."
-                            },
-                            {
-                                "question": "¿Como era su relación con la víctima?",
-                                "single": true,
-                                "answer": "Era mi hijo, pero no hablábamos mucho. Era un chico solitario. Por favor, no insista en este tema"
-                            }
-                        ]
-                    },
-                    {
-                        "question": "¿Qué opina de la víctima?",
-                        "answer": "Era un buen chico, pero algo distante. No hablaba mucho con los demás.",
-                        "options": [
-                            {
-                                "question": "¿Cree que el mayordomo podría ser el asesino?",
-                                "answer": "Claro que ha sido él, ¿no lee usted novelas de misterio?",
-                                "clue": ["testimonio de la señora"]
-                            },
-                            {
-                                "question": "¿Cree que alguien más podría ser el asesino?",
-                                "answer": "No lo sé, pero no me extrañaría que alguien quisiera hacerle daño."
-                            }
-                        ]
-                    }
-                ]
-            }
+          "name": "cadaver de la victima",
+          "description": "El cuerpo sin vida de la víctima, con una herida de cuchillo en el pecho"
         }
-    ],
-    "initialLocation": "recibidor",
-    "finalClue": "cuchillo"
+      ]
+    },
+    {
+      "name": "salón",
+      "image": "salon.jpg",
+      "description": "Un salón lujoso, con muebles de madera y cuadros antiguos",
+      "connections": ["recibidor"]
+    }
+  ],
+
+  "characters": [
+    {
+      "id": "donAlfredo",
+      "name": "Don Alfredo, mayordomo",
+      "description": "Un hombre de mediana edad, con aspecto serio y formal",
+      "location": "recibidor",
+      "dialog": {
+        "initial": "Buenas tardes, señor detective. ¿En qué puedo ayudarle?",
+        "continuation": "¿Quiere hacerme alguna pregunta más?",
+        "final": "Gracias por su tiempo, señora. Si tiene alguna información adicional, no dude en decírmelo.",
+
+        "options": [
+          {
+            "question": "¿Dónde estaba usted la noche del crimen?",
+            "answer": "Estaba en la cocina, preparando la cena para el señor y la señora.",
+            "options": [
+              {
+                "question": "¿Vio a alguien más en la casa?",
+                "answer": "No, no vi a nadie más. Estaba solo en la cocina."
+              },
+              {
+                "question": "¿Como era su relación laboral con la víctima?",
+                "answer": "Mucho trabajo y un sueldo bajo, como siempre."
+              }
+            ]
+          },
+          {
+            "question": "¿Qué opina de la víctima?",
+            "answer": "Era hijo de buena familia, pero algo distante. No hablaba mucho con los demás."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ladyButterworth",
+      "name": "Lady Butterworth",
+      "description": "Una mujer de avanzada edad, con aspecto elegante y distante",
+      "location": "salón",
+      "dialog": {
+        "initial": "Buenas tardes, detective. ¿En qué puedo ayudarle?",
+        "continuation": "¿Quiere hacerme alguna pregunta más?",
+        "final": "Gracias por su tiempo, señora. Si tiene alguna información adicional, no dude en decírmelo.",
+
+        "options": [
+          {
+            "question": "¿Dónde estaba usted la noche del crimen?",
+            "answer": "Estaba en el salón, leyendo un libro. No me di cuenta de nada raro.",
+            "options": [
+              {
+                "question": "¿Vio a alguien más en la casa?",
+                "answer": "No, no vi a nadie más. Estaba sola en el salón."
+              },
+              {
+                "question": "¿Como era su relación con la víctima?",
+                "single": true,
+                "answer": "Era mi hijo, pero no hablábamos mucho. Era un chico solitario. Por favor, no insista en este tema"
+              }
+            ]
+          },
+          {
+            "question": "¿Qué opina de la víctima?",
+            "answer": "Era un buen chico, pero algo distante. No hablaba mucho con los demás.",
+            "options": [
+              {
+                "question": "¿Cree que el mayordomo podría ser el asesino?",
+                "answer": "Claro que ha sido él, ¿no lee usted novelas de misterio?",
+                "clue": ["testimonio de la señora"]
+              },
+              {
+                "question": "¿Cree que alguien más podría ser el asesino?",
+                "answer": "No lo sé, pero no me extrañaría que alguien quisiera hacerle daño."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "initialLocation": "recibidor",
+  "finalClue": "cuchillo"
 }
