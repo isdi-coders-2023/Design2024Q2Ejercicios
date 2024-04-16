@@ -14,8 +14,8 @@ const stories: Story[] = [basic as Story, basic2 as Story, basic3 as Story];
 export const SelectionScreen: React.FC<SelectionScreenProps> = ({ start }) => {
   const [selectedStory, setSelectedStory] = useState<Story | null>(null);
 
-  const startStory = () => {
-    start(basic3 as Story);
+  const startStory = (story: Story) => {
+    start(story);
   };
 
   const handleStoryClick = (story: Story) => {
@@ -43,7 +43,11 @@ export const SelectionScreen: React.FC<SelectionScreenProps> = ({ start }) => {
         </p>
       </section>
       <section className={styles.controls}>
-        <button className={styles.comenzar} onClick={startStory}>
+        <button
+          className={styles.comenzar}
+          onClick={() => startStory(selectedStory as Story)}
+          disabled={!selectedStory}
+        >
           Comenzar
         </button>
       </section>
