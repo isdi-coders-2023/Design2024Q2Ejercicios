@@ -1,0 +1,26 @@
+sequenceDiagram
+    actor Alice
+    participant BookStore
+
+    create participant D as Customer
+    Alice->>D: new Customer()
+    Alice->>BookStore: getBooks()
+    Alice->>D: addBook()
+
+    Alice->>BookStore: processOrder(Customer)
+
+    activate BookStore
+
+    BookStore ->> D: getTotalPrice()
+
+    activate D
+    D ->> Book: *[all the books] getPrice() 
+
+    D -->> BookStore: totalPrice
+
+    deactivate D
+
+    BookStore -->> Alice: totalPrice
+
+    deactivate BookStore
+
