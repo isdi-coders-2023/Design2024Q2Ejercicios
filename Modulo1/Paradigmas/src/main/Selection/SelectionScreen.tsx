@@ -4,22 +4,33 @@ import styles from "./SelectionScreen.module.scss";
 
 interface SelectionScreenProps {
   start: (story: Story) => void;
+  stories: Story[];
 }
 
-export const SelectionScreen: React.FC<SelectionScreenProps> = ({ start }) => {
+export const SelectionScreen: React.FC<SelectionScreenProps> = ({
+  start,
+  stories,
+}) => {
   const startStory = () => {
     start(basic3 as Story);
   };
+
+  const selectionScreenInfo = stories.map((story) => {
+    return {
+      title: story.title,
+      description: story.initialDescription,
+    };
+  });
 
   return (
     <>
       <section className={styles.selectionScreen}>
         <ul className={styles.availableStories}>
-          <li className={`${styles.story}`}>Una de las historias</li>
-          <li className={`${styles.story} ${styles.selected}`}>
-            Una de las historias
-          </li>
-          <li className={`${styles.story}`}>Una de las historias</li>
+          {selectionScreenInfo.map((story, index) => (
+            <li key={index} className={styles.story} onClick={}>
+              {story.title}
+            </li>
+          ))}
         </ul>
         <p className={styles.storyDescription}>
           Esta debería ser la descripción de la historia cuando el usuario clica
