@@ -136,11 +136,7 @@ export const Turtle: React.FC<TurtleProps> = ({ debug }) => {
 
   return (
     <div className={styles.slug}>
-      <DataLoadingManagement
-        data={data}
-        error={error}
-        render={(data) => <DataTable data={data as Record<string, City[]>} />}
-      />
+      <DataLoadingManagement data={data} error={error} render={(data) => <DataTable data={data as Record<string, City[]>} />} />
     </div>
   );
 };
