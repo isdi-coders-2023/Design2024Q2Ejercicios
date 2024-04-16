@@ -1,6 +1,6 @@
 {
   "title": "El misterio de la mansión v2",
-  "initialDescription": "Un asesinato ha tenido lugar en una mansión victoriana. La víctima es un joven aristócrata, hijo de la dueña de la casa. El mayordomo y la madre de la víctima son los principales sospechosos. El detective debe investigar la escena del crimen y hablar con los testigos para resolver el caso.",
+  "initialDescription": "2. Un asesinato ha tenido lugar en una mansión victoriana. La víctima es un joven aristócrata, hijo de la dueña de la casa. El mayordomo y la madre de la víctima son los principales sospechosos. El detective debe investigar la escena del crimen y hablar con los testigos para resolver el caso.",
   "locations": [
     {
       "name": "recibidor",
