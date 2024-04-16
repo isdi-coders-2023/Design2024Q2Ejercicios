@@ -29,7 +29,11 @@ function App() {
     <div className={styles.root}>
       <h1 className={styles.title}>Los Misterios de Mr. Poirot</h1>
       <h2 className={styles.subtitle}>Una aventura conversacional old-school</h2>
-      {currentStory ? <GameScreen endGame={endStory} story={currentStory} /> : <SelectionScreen stories={stories} start={startStory} />}
+      {currentStory ? (
+        <GameScreen endGame={endStory} story={currentStory} />
+      ) : (
+        <SelectionScreen setCurrentStory={setCurrentStory} stories={stories} start={startStory} />
+      )}
     </div>
   );
 }
