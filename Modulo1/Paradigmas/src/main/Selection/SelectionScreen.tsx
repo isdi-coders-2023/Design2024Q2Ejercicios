@@ -1,36 +1,48 @@
-import basic3 from "../../stories/basic3.story.json";
+import { useState } from "react";
 import { Story } from "../stories";
 import styles from "./SelectionScreen.module.scss";
 
 interface SelectionScreenProps {
-  start: (story: Story) => void;
+	start: (story: Story) => void;
+	stories: Story[];
 }
 
-export const SelectionScreen: React.FC<SelectionScreenProps> = ({ start }) => {
-  const startStory = () => {
-    start(basic3 as Story);
-  };
+export const SelectionScreen: React.FC<SelectionScreenProps> = ({
+	start,
+	stories,
+}) => {
+	const [story, setStory] = useState<Story | null>();
 
-  return (
-    <>
-      <section className={styles.selectionScreen}>
-        <ul className={styles.availableStories}>
-          <li className={`${styles.story}`}>Una de las historias</li>
-          <li className={`${styles.story} ${styles.selected}`}>
-            Una de las historias
-          </li>
-          <li className={`${styles.story}`}>Una de las historias</li>
-        </ul>
-        <p className={styles.storyDescription}>
-          Esta debería ser la descripción de la historia cuando el usuario clica
-          en ella
-        </p>
-      </section>
-      <section className={styles.controls}>
-        <button className={styles.comenzar} onClick={startStory}>
-          Comenzar
-        </button>
-      </section>
-    </>
-  );
+	const startStory = (story: Story) => {
+		start(story);
+	};
+
+	return (
+		<>
+			<section className={styles.selectionScreen}>
+				<ul className={styles.availableStories}>
+					{stories.map((story) => (
+						<li className={`${styles.story}`} onClick={() => setStory(story)}>
+							{story.title}
+						</li>
+					))}
+					{/* TODO: styles.selected cuando un story esta seleccionado */}
+				</ul>
+				<p className={styles.storyDescription}>
+					{story
+						? story?.initialDescription
+						: "Seleccione una historia para empezar a jugar"}
+				</p>
+			</section>
+			<section className={styles.controls}>
+				<button
+					disabled={story ? false : true}
+					className={styles.comenzar}
+					onClick={() => startStory(story)}
+				>
+					{story ? "Comenzar" : "Selecciona una historia"}
+				</button>
+			</section>
+		</>
+	);
 };
