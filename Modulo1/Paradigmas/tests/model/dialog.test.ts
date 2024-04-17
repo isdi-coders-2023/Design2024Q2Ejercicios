@@ -23,10 +23,8 @@ describe("Dialog functionality tests", () => {
 
       // Then
       expect(questions).toHaveLength(2);
-      expect(questions[0].question).toEqual(
-        "¿Dónde estaba usted la noche del crimen?"
-      );
-      expect(questions[1].question).toEqual("¿Qué opina de la víctima?");
+      expect(questions[0]).toEqual("¿Dónde estaba usted la noche del crimen?");
+      expect(questions[1]).toEqual("¿Qué opina de la víctima?");
     });
   });
 
@@ -41,7 +39,7 @@ describe("Dialog functionality tests", () => {
       );
 
       // Then
-      expect(answer?.answer).toEqual(
+      expect(answer).toEqual(
         "Estaba en la cocina, preparando la cena para el señor y la señora."
       );
     });
@@ -50,16 +48,14 @@ describe("Dialog functionality tests", () => {
       const testDialog = loadDialog(testStory.characters[0].dialog);
 
       // When
-      const answer = testDialog.askQuestion(
-        "¿Dónde estaba usted la noche del crimen?"
-      );
+      testDialog.askQuestion("¿Dónde estaba usted la noche del crimen?");
 
       // Then
-      expect(answer?.getFollowUps()).toHaveLength(2);
-      expect(answer?.getFollowUps()[0].question).toEqual(
+      expect(testDialog.getOptions()).toHaveLength(2);
+      expect(testDialog.getOptions()[0]).toEqual(
         "¿Vio a alguien más en la casa?"
       );
-      expect(answer?.getFollowUps()[1].question).toEqual(
+      expect(testDialog.getOptions()[1]).toEqual(
         "¿Como era su relación laboral con la víctima?"
       );
     });

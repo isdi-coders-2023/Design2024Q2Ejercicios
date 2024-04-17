@@ -1,5 +1,5 @@
+import { Character } from "./characters";
 import { Story } from "./stories";
-import { Character } from "./game";
 
 export interface LocationDescription {
   name: string;

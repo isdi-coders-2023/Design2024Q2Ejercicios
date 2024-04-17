@@ -26,25 +26,37 @@ export class Dialog {
   continuation: string;
   final: string;
 
-  options: DialogOption[];
+  initialOptions: DialogOption[];
+  currentOption?: DialogOption;
 
   constructor(initial: string, continuation: string, final: string) {
     this.initial = initial;
     this.continuation = continuation;
     this.final = final;
-    this.options = [];
+    this.initialOptions = [];
   }
 
   addOption(option: DialogOption) {
-    this.options.push(option);
+    this.initialOptions.push(option);
   }
 
   getOptions() {
-    return this.options;
+    const optionList = this.currentOption
+      ? this.currentOption.getFollowUps()
+      : this.initialOptions;
+
+    return optionList.map((option) => option.question);
   }
 
   askQuestion(question: string) {
-    return this.options.find((option) => option.question === question);
+    const option = this.initialOptions.find(
+      (option) => option.question === question
+    );
+
+    if (option) {
+      this.currentOption = option;
+      return option.answer;
+    }
   }
 }
 
