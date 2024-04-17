@@ -2,14 +2,27 @@ import { Dialog, loadDialog } from "../../src/model/dialog";
 import testStory from "./data/test.story.json";
 
 describe("Dialog functionality tests", () => {
-  describe("When the initial dialog is requested", () => {
+  describe("When the dialog is started", () => {
     it("should return the default dialog", () => {
       // Given
       // When
       const testDialog = new Dialog("initial", "continuation", "final");
 
       // Then
-      expect(testDialog.initial).toEqual("initial");
+      expect(testDialog.startDialog()).toEqual("initial");
+    });
+  });
+
+  describe("When a dialog is finished", () => {
+    it("should return the final dialog", () => {
+      // Given
+      const testDialog = new Dialog("initial", "continuation", "final");
+
+      // When
+      const finalMessage = testDialog.endDialog();
+
+      // Then
+      expect(finalMessage).toEqual("final");
     });
   });
 

@@ -10,13 +10,13 @@ export class Character {
   description: CharacterDescription;
   dialog: Dialog;
 
-  constructor(id: string, name: string, description: string) {
+  constructor(id: string, name: string, description: string, dialog: Dialog) {
     this.description = {
       id,
       name,
       description,
     };
-    this.dialog = new Dialog("", "", "");
+    this.dialog = dialog;
   }
 
   getDescription() {

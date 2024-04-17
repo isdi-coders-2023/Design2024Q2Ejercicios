@@ -58,6 +58,16 @@ export class Dialog {
       return option.answer;
     }
   }
+
+  startDialog() {
+    this.currentOption = undefined;
+    return this.initial;
+  }
+
+  endDialog() {
+    this.currentOption = undefined;
+    return this.final;
+  }
 }
 
 export const loadDialog = (dialog: StoryDialog) => {

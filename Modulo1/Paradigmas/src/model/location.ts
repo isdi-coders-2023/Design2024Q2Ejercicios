@@ -1,4 +1,5 @@
 import { Character } from "./characters";
+import { loadDialog } from "./dialog";
 import { Story } from "./stories";
 
 export interface LocationDescription {
@@ -73,7 +74,12 @@ const getCharactersFromStory = (story: Story) => {
   return story.characters
     .map(
       (character) =>
-        new Character(character.id, character.name, character.description)
+        new Character(
+          character.id,
+          character.name,
+          character.description,
+          loadDialog(character.dialog)
+        )
     )
     .reduce((acc, character) => {
       acc[character.getDescription().id] = character;
