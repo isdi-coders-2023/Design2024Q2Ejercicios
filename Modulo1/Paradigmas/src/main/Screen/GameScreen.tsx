@@ -26,14 +26,15 @@ export const GameScreen: React.FC<GameScreenProps> = ({ story, endGame }) => {
 
   const game = useMemo(() => new Game(story), [story]);
 
-  useEffect(() => {
+  const updateGame = () => {
     setLocationDescription(game.getLocationDescription());
     setOptions(game.getOptions());
+  };
 
-    game.addObserver(() => {
-      setLocationDescription(game.getLocationDescription());
-      setOptions(game.getOptions());
-    });
+  useEffect(() => {
+    updateGame();
+
+    game.addObserver(updateGame);
   }, [game]);
 
   const selectHandler = (option: GameOption) => {
