@@ -1,47 +1,48 @@
-export interface Clue {
+export interface StoryClue {
   name: string;
   description: string;
   requisites: string[];
 }
 
-export interface Location {
+export interface StoryLocation {
   name: string;
   image: string;
   description: string;
   connections: string[];
-  clues: Clue[];
+  clues: StoryClue[];
+  characters: string[];
 }
 
-export interface DialogOption {
+export interface StoryDialogOption {
   question: string;
   answer: string;
   single?: boolean;
   clue?: string[];
 
-  options?: DialogOption[];
+  options?: StoryDialogOption[];
 }
 
-export interface Dialog {
+export interface StoryDialog {
   initial: string;
   final: string;
   continuation: string;
 
-  options: DialogOption[];
+  options: StoryDialogOption[];
 }
 
-export interface Character {
+export interface StoryCharacter {
   id: string;
   name: string;
   description: string;
   location: string;
-  dialog: Dialog;
+  dialog: StoryDialog;
 }
 
 export interface Story {
   title: string;
   initialDescription: string;
-  locations: Location[];
-  characters: Character[];
+  locations: StoryLocation[];
+  characters: StoryCharacter[];
   initialLocation: string;
   finalClue: string;
 }

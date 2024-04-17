@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Location, Story } from "../stories";
+import { StoryLocation, Story } from "../../model/stories";
 import { ConversationHistoryDisplay } from "./ConversationHistory";
 import { GameOptions } from "./GameOptions";
 import styles from "./GameScreen.module.scss";
@@ -10,7 +10,7 @@ interface GameScreenProps {
 }
 
 export const GameScreen: React.FC<GameScreenProps> = ({ story }) => {
-  const [currentScene, setCurrentScene] = useState<Location | undefined>(
+  const [currentScene, setCurrentScene] = useState<StoryLocation | undefined>(
     undefined
   );
 

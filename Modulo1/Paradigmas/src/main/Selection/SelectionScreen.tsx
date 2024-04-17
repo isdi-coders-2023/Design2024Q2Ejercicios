@@ -1,5 +1,5 @@
 import basic3 from "../../stories/basic3.story.json";
-import { Story } from "../stories";
+import { Story } from "../../model/stories";
 import styles from "./SelectionScreen.module.scss";
 
 interface SelectionScreenProps {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./App.module.scss";
 import { SelectionScreen } from "./Selection/SelectionScreen";
-import { Story } from "./stories";
+import { Story } from "../model/stories";
 import { GameScreen } from "./Screen/GameScreen";
 
 function App() {
