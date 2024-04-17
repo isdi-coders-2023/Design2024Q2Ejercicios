@@ -114,14 +114,20 @@ export class Game {
   map: Map;
   state: "moving" | "talking" | "end";
   currentCharacter?: Character;
+  observers: ((game: Game) => void)[] = [];
 
   constructor(story: Story) {
     this.map = loadMap(story);
     this.state = "moving";
+    this.observers = [];
   }
 
   getLocationDescription() {
     return this.map.getLocation().getDescription();
+  }
+
+  notifyObservers() {
+    this.observers.forEach((observer) => observer(this));
   }
 
   #getLocationOptions() {
@@ -177,6 +183,7 @@ export class Game {
 
   chooseOption(option: GameOption) {
     option.applyOption();
+    this.notifyObservers();
   }
 
   isGameEnded() {
@@ -185,5 +192,9 @@ export class Game {
 
   getCharacterDescription() {
     return this.currentCharacter?.getDescription();
+  }
+
+  addObserver(observer: (game: Game) => void) {
+    this.observers.push(observer);
   }
 }
