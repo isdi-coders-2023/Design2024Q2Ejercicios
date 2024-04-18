@@ -1,15 +1,22 @@
 import styles from "./GameScreen.module.scss";
+import { useGameOptions } from "./useGameOptions";
 
-interface GameOptionsProps {}
+type GameOptionsProps = {
+  end: () => void;
+};
 
-export const GameOptions: React.FC<GameOptionsProps> = () => {
+export const GameOptions = ({ end }: GameOptionsProps) => {
+  const { options } = useGameOptions();
+
   return (
     <section className={styles.options}>
-      <button className={styles.chooseAnswer}>Opción 1</button>
-      <button className={styles.chooseAnswer}>Opción 2</button>
-      <button className={styles.chooseAnswer}>Opción 3</button>
-      <button className={styles.chooseAnswer}>Opción 4</button>
-      <button className={styles.chooseAnswer}>Opción 5</button>
+      {options.map((option, index) => {
+        return (
+          <button key={index} onClick={option.handler ?? end}>
+            {option.text}
+          </button>
+        );
+      })}
     </section>
   );
 };
