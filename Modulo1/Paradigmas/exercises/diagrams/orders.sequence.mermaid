@@ -1,0 +1,25 @@
+sequenceDiagram
+    actor Usuario
+    Usuario->>+Pedido: procesar(cliente)
+    Pedido-->>-Usuario: faltan datos bancarios
+
+    Usuario ->>+ DatosBancarios: crearDatos()
+    DatosBancarios -->>- Usuario: nuevos datos
+
+    Usuario ->>+ Pedido: procesar(cliente)
+    Pedido ->>+ Restriccion: *[para todas las restricciones] aplicar()
+    Restriccion -->>- Pedido: aplicable
+
+    Pedido ->>+ Promocion: *[para todas las promos] aplicar()
+    Promocion -->>- Pedido: lineas descontadas
+
+    Pedido ->>+ Cliente: obtenerImpuestos()
+    Cliente -->>- Pedido: impuestos
+
+    Pedido ->>+ Impuesto: *[para todos los impuestos] aplicar()
+    Impuesto -->>- Pedido: lineas descontadas
+
+    Pedido -->>- Usuario: pedido procesado
+
+
+

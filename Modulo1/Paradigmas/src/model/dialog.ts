@@ -49,6 +49,17 @@ export class Dialog {
   }
 
   askQuestion(question: string) {
+    if (this.currentOption) {
+      const followUp = this.currentOption
+        .getFollowUps()
+        .find((option) => option.question === question);
+
+      if (followUp) {
+        this.currentOption = followUp;
+        return followUp.answer;
+      }
+    }
+
     const option = this.initialOptions.find(
       (option) => option.question === question
     );
