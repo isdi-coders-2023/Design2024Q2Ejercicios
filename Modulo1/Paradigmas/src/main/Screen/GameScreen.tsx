@@ -1,25 +1,27 @@
-import { useEffect, useState } from "react";
-import { Location, Story } from "../stories";
+import { useEffect } from "react";
+import { Location } from "../stories";
 import { ConversationHistoryDisplay } from "./ConversationHistory";
 import { GameOptions } from "./GameOptions";
 import styles from "./GameScreen.module.scss";
 import { StoryInfo } from "./StoryInfo";
+import { useSelectedStory } from "./useSelectedStory";
+import { useGameOptions } from "./useGameOptions";
 
-interface GameScreenProps {
-  story: Story;
-}
+type GameScreeProps = {
+  end: () => void;
+};
 
-export const GameScreen: React.FC<GameScreenProps> = ({ story }) => {
-  const [currentScene, setCurrentScene] = useState<Location | undefined>(
-    undefined
-  );
+export const GameScreen = ({ end }: GameScreeProps) => {
+  const { selectedStory } = useSelectedStory();
+  const { options, setCurrentScene, currentScene } = useGameOptions();
 
   useEffect(() => {
-    if (story) {
-      setCurrentScene(story.locations[0]);
+    if (selectedStory) {
+      setCurrentScene(selectedStory.locations[0] as Location);
     }
-  }, [story]);
+  }, [selectedStory]);
 
+  console.log(currentScene);
   return (
     <>
       <section className={styles.gameScreen}>
@@ -29,7 +31,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({ story }) => {
         />
         <ConversationHistoryDisplay />
       </section>
-      <GameOptions />
+      <GameOptions options={options} end={end} />
     </>
   );
 };
