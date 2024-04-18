@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Location } from "../stories";
 import { ConversationHistoryDisplay } from "./ConversationHistory";
 import { GameOptions } from "./GameOptions";
 import styles from "./GameScreen.module.scss";
 import { StoryInfo } from "./StoryInfo";
 import { useSelectedStory } from "./useSelectedStory";
+import { useGameOptions } from "./useGameOptions";
 
 type GameScreeProps = {
   end: () => void;
@@ -12,17 +13,15 @@ type GameScreeProps = {
 
 export const GameScreen = ({ end }: GameScreeProps) => {
   const { selectedStory } = useSelectedStory();
-
-  const [currentScene, setCurrentScene] = useState<Location | undefined>(
-    undefined
-  );
+  const { options, setCurrentScene, currentScene } = useGameOptions();
 
   useEffect(() => {
     if (selectedStory) {
-      setCurrentScene(selectedStory.locations[0]);
+      setCurrentScene(selectedStory.locations[0] as Location);
     }
   }, [selectedStory]);
 
+  console.log(currentScene);
   return (
     <>
       <section className={styles.gameScreen}>
@@ -32,7 +31,7 @@ export const GameScreen = ({ end }: GameScreeProps) => {
         />
         <ConversationHistoryDisplay />
       </section>
-      <GameOptions end={end} />
+      <GameOptions options={options} end={end} />
     </>
   );
 };

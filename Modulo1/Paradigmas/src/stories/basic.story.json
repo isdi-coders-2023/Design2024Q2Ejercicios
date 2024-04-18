@@ -34,7 +34,6 @@
       "connections": ["recibidor"]
     }
   ],
-
   "characters": [
     {
       "id": "donAlfredo",
@@ -45,7 +44,6 @@
         "initial": "Buenas tardes, señor detective. ¿En qué puedo ayudarle?",
         "continuation": "¿Quiere hacerme alguna pregunta más?",
         "final": "Gracias por su tiempo, señora. Si tiene alguna información adicional, no dude en decírmelo.",
-
         "options": [
           {
             "question": "¿Dónde estaba usted la noche del crimen?",
@@ -77,7 +75,6 @@
         "initial": "Buenas tardes, detective. ¿En qué puedo ayudarle?",
         "continuation": "¿Quiere hacerme alguna pregunta más?",
         "final": "Gracias por su tiempo, señora. Si tiene alguna información adicional, no dude en decírmelo.",
-
         "options": [
           {
             "question": "¿Dónde estaba usted la noche del crimen?",

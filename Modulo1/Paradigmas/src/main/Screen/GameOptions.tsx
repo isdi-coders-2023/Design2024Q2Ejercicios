@@ -1,18 +1,21 @@
 import styles from "./GameScreen.module.scss";
-import { useGameOptions } from "./useGameOptions";
+import { OptionType } from "./useGameOptions";
 
 type GameOptionsProps = {
   end: () => void;
+  options: OptionType[];
 };
 
-export const GameOptions = ({ end }: GameOptionsProps) => {
-  const { options } = useGameOptions();
-
+export const GameOptions = ({ options, end }: GameOptionsProps) => {
   return (
     <section className={styles.options}>
-      {options.map((option, index) => {
+      {options.map((option) => {
+        const handleClick = option.handler
+          ? () => option.handler(option.name)
+          : end;
+
         return (
-          <button key={index} onClick={option.handler ?? end}>
+          <button key={option.text} onClick={handleClick}>
             {option.text}
           </button>
         );
