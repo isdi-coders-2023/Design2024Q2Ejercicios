@@ -26,13 +26,15 @@ const useGame = (story: Story) => {
 
   const [history, setHistory] = useState<ConversationHistory[]>([]);
 
+  const [gameFinished, setGameFinished] = useState<boolean>(false);
+
   const game = useMemo(() => new Game(story), [story]);
 
   const updateGame = () => {
     setLocationDescription(game.getLocationDescription());
     setOptions(game.getOptions());
-
     setHistory(game.getHistory());
+    setGameFinished(game.isGameEnded());
   };
 
   useEffect(() => {
@@ -45,12 +47,18 @@ const useGame = (story: Story) => {
     game.chooseOption(option);
   };
 
-  return { locationDescription, options, selectHandler, history };
+  return { locationDescription, options, selectHandler, history, gameFinished };
 };
 
 export const GameScreen: React.FC<GameScreenProps> = ({ story, endGame }) => {
-  const { locationDescription, options, history, selectHandler } =
+  const { locationDescription, options, history, gameFinished, selectHandler } =
     useGame(story);
+
+  useEffect(() => {
+    if (gameFinished) {
+      endGame();
+    }
+  }, [gameFinished, endGame]);
 
   return (
     <>

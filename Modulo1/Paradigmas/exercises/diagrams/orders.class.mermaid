@@ -1,0 +1,47 @@
+classDiagram
+    class Pedido {
+        - validarCliente()
+        - aplicarPromos()
+        - aplicarRestricciones()
+        - aplicarImpuestos()
+        + procesar()
+    }
+
+    class Linea {
+
+    }
+
+    class Cliente {
+
+    }
+
+    class Promocion {
+        + aplicar()
+    }
+
+    class Impuesto {
+        + aplicar()
+    }
+
+    class Restriccion {
+        + validar()
+    }
+
+    class DatosBancarios {
+
+    }
+
+    class DatosPersonales {
+        
+    }
+
+    Pedido --> Cliente
+    Pedido o--> Linea
+    Pedido o--> Promocion
+    Pedido o--> Restriccion
+
+
+    Cliente --> DatosBancarios
+    Cliente --> DatosPersonales
+    Cliente o--> Impuesto
+

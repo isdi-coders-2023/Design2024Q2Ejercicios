@@ -1,0 +1,40 @@
+classDiagram
+    class BaseBook {
+      - String Title
+      - String Author
+      - Number Price
+
+      + getTotalPrice()
+      + getType()
+      + toString()
+    }
+
+    class PurchaseBook {
+    }
+
+    class RentBook {
+      - Number Days
+    }
+
+    BaseBook <|-- PurchaseBook
+    BaseBook <|-- RentBook
+
+    class Customer {
+      - String Name
+
+      + getTotalPrice()
+      + listBooks()
+      + toString()
+    }
+
+    Customer o-- Book
+
+    class BookStore {
+      + listRentedBooks()
+    }
+
+    BookStore o-- PurchaseBook : Books for sale
+    BookStore o-- RentBook : Books for rent
+    BookStore o-- RentBook : Rented books
+
+    BookStore --> Customer 
