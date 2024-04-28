@@ -7,6 +7,12 @@ export interface GameOptionDescription {
   name: string;
 }
 
+export interface ConversationHistory {
+  character: string;
+
+  lines: string[];
+}
+
 export class GameOption {
   optionDescription: GameOptionDescription;
   game: Game;
@@ -61,6 +67,10 @@ class CharacterOption extends GameOption {
   applyOption() {
     this.game.state = "talking";
     const initialLine = this.character.getDialog().startDialog();
+    this.game.newDialogHistory(this.character.getDescription().name, [
+      initialLine,
+    ]);
+
     this.game.currentCharacter = this.character;
     return initialLine;
   }
@@ -82,7 +92,10 @@ class DialogOption extends GameOption {
   }
 
   applyOption() {
-    return this.character.dialog.askQuestion(this.question);
+    const answer = this.character.dialog.askQuestion(this.question);
+    this.game.addToHistory(this.question);
+    this.game.addToHistory(answer || "");
+    return answer;
   }
 
   getType(): string {
@@ -115,6 +128,7 @@ export class Game {
   state: "moving" | "talking" | "end";
   currentCharacter?: Character;
   observers: ((game: Game) => void)[] = [];
+  history: ConversationHistory[] = [];
 
   constructor(story: Story) {
     this.map = loadMap(story);
@@ -182,8 +196,9 @@ export class Game {
   }
 
   chooseOption(option: GameOption) {
-    option.applyOption();
+    const answer = option.applyOption();
     this.notifyObservers();
+    return answer;
   }
 
   isGameEnded() {
@@ -196,5 +211,17 @@ export class Game {
 
   addObserver(observer: (game: Game) => void) {
     this.observers.push(observer);
+  }
+
+  newDialogHistory(character: string, lines: string[]) {
+    this.history.push({ character, lines });
+  }
+
+  addToHistory(line: string) {
+    this.history[this.history.length - 1].lines.push(line);
+  }
+
+  getHistory() {
+    return this.history;
   }
 }

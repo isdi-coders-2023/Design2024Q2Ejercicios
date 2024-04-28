@@ -195,4 +195,55 @@ describe("Game tests", () => {
       expect(options[3].getType()).toEqual("end");
     });
   });
+
+  describe("When a dialog option is selected", () => {
+    it("should return the correct answer", () => {
+      // Given
+      const testGame = new Game(story as Story);
+      const characterOptions = testGame
+        .getOptions()
+        .filter((option) => option.getType() === "character");
+
+      // When
+      testGame.chooseOption(characterOptions[0]);
+      const dialogOptions = testGame
+        .getOptions()
+        .filter((option) => option.getType() === "dialog");
+
+      const answer = testGame.chooseOption(dialogOptions[0]);
+
+      // Then
+      expect(answer).toEqual(
+        "Estaba en la cocina, preparando la cena para el señor y la señora."
+      );
+    });
+  });
+
+  describe("When a follow-up dialog option is selected", () => {
+    it("should return the correct answer", () => {
+      // Given
+      const testGame = new Game(story as Story);
+      const characterOptions = testGame
+        .getOptions()
+        .filter((option) => option.getType() === "character");
+
+      // When
+      testGame.chooseOption(characterOptions[0]);
+      const dialogOptions = testGame
+        .getOptions()
+        .filter((option) => option.getType() === "dialog");
+
+      testGame.chooseOption(dialogOptions[0]);
+      const followUpDialogOptions = testGame
+        .getOptions()
+        .filter((option) => option.getType() === "dialog");
+
+      const answer = testGame.chooseOption(followUpDialogOptions[0]);
+
+      // Then
+      expect(answer).toEqual(
+        "No, no vi a nadie más. Estaba solo en la cocina."
+      );
+    });
+  });
 });

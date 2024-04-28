@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Game, GameOption } from "../../model/game";
+import { ConversationHistory, Game, GameOption } from "../../model/game";
 import { Story } from "../../model/stories";
 import { ConversationHistoryDisplay } from "./ConversationHistory";
 import { GameOptions } from "./GameOptions";
@@ -18,17 +18,21 @@ const createLoadingDescription = (): LocationDescription => ({
   image: "",
 });
 
-export const GameScreen: React.FC<GameScreenProps> = ({ story, endGame }) => {
+const useGame = (story: Story) => {
   const [locationDescription, setLocationDescription] =
     useState<LocationDescription>(createLoadingDescription());
 
   const [options, setOptions] = useState<GameOption[]>([]);
+
+  const [history, setHistory] = useState<ConversationHistory[]>([]);
 
   const game = useMemo(() => new Game(story), [story]);
 
   const updateGame = () => {
     setLocationDescription(game.getLocationDescription());
     setOptions(game.getOptions());
+
+    setHistory(game.getHistory());
   };
 
   useEffect(() => {
@@ -41,6 +45,13 @@ export const GameScreen: React.FC<GameScreenProps> = ({ story, endGame }) => {
     game.chooseOption(option);
   };
 
+  return { locationDescription, options, selectHandler, history };
+};
+
+export const GameScreen: React.FC<GameScreenProps> = ({ story, endGame }) => {
+  const { locationDescription, options, history, selectHandler } =
+    useGame(story);
+
   return (
     <>
       <section className={styles.gameScreen}>
@@ -48,7 +59,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({ story, endGame }) => {
           image={locationDescription.image}
           description={locationDescription.description}
         />
-        <ConversationHistoryDisplay />
+        <ConversationHistoryDisplay history={history} />
       </section>
 
       <GameOptions options={options} select={selectHandler} />
