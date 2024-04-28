@@ -7,12 +7,11 @@ import { StoryInfo } from "./StoryInfo";
 
 interface GameScreenProps {
   story: Story;
+  endGame: () => void;
 }
 
-export const GameScreen: React.FC<GameScreenProps> = ({ story }) => {
-  const [currentScene, setCurrentScene] = useState<Location | undefined>(
-    undefined
-  );
+export const GameScreen: React.FC<GameScreenProps> = ({ story, endGame }) => {
+  const [currentScene, setCurrentScene] = useState<Location | undefined>(undefined);
 
   useEffect(() => {
     if (story) {
@@ -23,10 +22,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({ story }) => {
   return (
     <>
       <section className={styles.gameScreen}>
-        <StoryInfo
-          image={currentScene?.image}
-          description={currentScene?.description}
-        />
+        <StoryInfo image={currentScene?.image} description={currentScene?.description} />
         <ConversationHistoryDisplay />
       </section>
       <GameOptions />
