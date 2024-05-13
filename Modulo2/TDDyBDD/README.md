@@ -12,16 +12,15 @@ COMO usuario, QUIERO poder agregar elementos a una lista de tareas, PARA poder m
    - Desarrollar un endpoint POST en la API con la ruta /tasks/add que acepte solicitudes JSON.
    - La API debe recibir los textos de las tarea como parte del cuerpo de la solicitud.
    - La API debe estar correctamente configurada y ser accesible desde cualquier cliente que envíe solicitudes HTTP.
+   - La API debe devolver la respuesta creada con el Id de base de datos asignado
 2. **Implementar la lógica para agregar elementos a la lista de tareas:**
    - Escribir la lógica necesaria en el backend para procesar las solicitudes POST recibidas en el endpoint /tasks/add.
    - La lógica debe ser capaz de agregar el elemento recibido a la lista de tareas almacenada en la base de datos.
-   - Se debe manejar adecuadamente la inserción de múltiples elementos en la lista de tareas.
 
 ### Criterios de Aceptación
 
 - El endpoint /tasks/add debe estar disponible y responder correctamente a las solicitudes POST.
 - Al enviar una solicitud POST al endpoint /tasks/add con el cuerpo de la solicitud que contiene el texto de la tarea, la tarea debe ser agregada correctamente a la lista de tareas.
-- La API debe ser capaz de manejar la inserción de múltiples elementos en la lista de tareas sin errores ni fallos en la funcionalidad.
 
 ```gherkin
 
@@ -32,10 +31,17 @@ Feature: Agregar elementos a la lista de tareas a través de la API
     When el usuario envía una solicitud POST al endpoint "/tasks/add" con el siguiente JSON:
       """
       {
-        "tasks":["Comprar leche"]
+        "title":"Comprar leche"
       }
       """
     Then la solicitud debe ser exitosa con un código de respuesta 200
+    And el contenido de la respuesta debe ser
+    """
+      {
+         id: 1,
+         title:"Comprar leche"
+      }
+    """
     And el elemento "Comprar leche" debe ser agregado a la lista de tareas
 
 ```
