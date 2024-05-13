@@ -52,7 +52,7 @@ Then(
 );
 
 Then(
-  'el contenido de la respuesta debe ser:',
+  'el contenido de la respuesta debe ser',
   function (this: World, body: string) {
     assert.deepEqual(this.response?.body, JSON.parse(body));
   },
