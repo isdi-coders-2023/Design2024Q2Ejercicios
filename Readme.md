@@ -1,4 +1,4 @@
-# Ejercicios del Curso de Diseño 2024 Q2
+0# Ejercicios del Curso de Diseño 2024 Q2
 
 En este repositorio se irán dejando los ejercicios del Curso de Diseño de Software 2024 Q2,
 divididos por módulos. A continuación se muestra el índice de módulos con cada uno de los
@@ -36,3 +36,8 @@ que el repositorio mantiene un nivel de organización que lo haga usable:
 
 - [Métricas de software](Modulo1/Metricas)
 - [Paradigmas de software](Modulo1/Paradigmas)
+
+### Modulo 2: Principios de Diseño de Software
+
+- [Testing](Modulo2/Testing)
+- [TDD y BDD](Modulo2/TDDyBDD)

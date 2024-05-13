@@ -6,9 +6,13 @@ Imagina esto: tienes once años y justo antes de que suene la campana, tu profes
 
 Para prepararte para la próxima clase sin sudar la gota gorda, necesitas imprimir la secuencia completa. Tu clase tiene alrededor de 33 estudiantes, y el profesor podría recorrerla tres veces antes de que suene la campana para el recreo. La próxima lección de matemáticas es el jueves. ¡Es hora de programar!
 
-Escribe una función que dado un numero devuelva un string según los requerimientos. Para múltiplos de tres, imprime "Fizz". Para múltiplos de cinco, imprime "Buzz". Para números divisibles por tres y cinco, imprime "FizzBuzz".
+### Requerimientos
 
-Ejemplo de salida
+Escribe una función que dado un numero devuelva un string según los requerimientos:
+
+- Para múltiplos de tres, imprime "Fizz".
+- Para múltiplos de cinco, imprime "Buzz".
+- Para números divisibles por tres y cinco, imprime "FizzBuzz".
 
 ### Etapa 3 - Nuevos Requerimientos
 
