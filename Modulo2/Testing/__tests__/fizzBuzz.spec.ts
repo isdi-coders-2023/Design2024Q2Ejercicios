@@ -29,11 +29,14 @@ describe("FizzBuzz", () => {
   it('debería devolver "Buzz" para numeros que contienen el 5 pero no son múltiplos', () => {
     expect(fizzBuzz(52)).toEqual("Buzz");
   });
-  it('debería devolver "FizBuzz" para numeros que contienen el 5 y no son múltiplos 3', () => {
+  it('debería devolver "FizBuzz" para numeros que contienen el 5 y son múltiplos 3', () => {
     expect(fizzBuzz(51)).toEqual("FizzBuzz");
   });
 
-  it('debería devolver "FizBuzz" para numeros que contienen el 3 y no son múltiplos 5', () => {
+  it('debería devolver "FizBuzz" para numeros que contienen el 3 y son múltiplos 5', () => {
     expect(fizzBuzz(130)).toEqual("FizzBuzz");
+  });
+  it('debería devolver "FizBuzz" para numeros que contienen el 3 y 5 pero no son divisibles entre 3 ni 5', () => {
+    expect(fizzBuzz(53)).toEqual("FizzBuzz");
   });
 });
