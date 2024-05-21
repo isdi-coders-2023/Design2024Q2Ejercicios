@@ -11,6 +11,9 @@ export class TasksInMemoryRepository implements TasksRepository {
   }
 
   async add(task: Task): Promise<Task> {
+    if ((await this.getAll()).some((t) => t.title === task.title)) {
+      throw new Error('Task duplicated');
+    }
     const id = this.tasks.size + 1;
     const taskToSave = {
       ...task,
